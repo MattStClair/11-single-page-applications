@@ -7,7 +7,9 @@ var app = app || {};
   // code that used to be in index.html.
   // Also be sure to hide all the main section elements, and reveal the #articles section:
   articleController.init = function() {
-    app.Article.fetchAll(app.articleView.initIndexPage);
+    if (!app.Article.all[0]) {
+      app.Article.fetchAll(app.articleView.initIndexPage);
+    }
 
     $('.tab-content').hide();
     $('#articles').fadeIn();
